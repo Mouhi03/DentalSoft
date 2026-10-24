@@ -1,115 +1,112 @@
-# 🦷 DentalSoft
+# DentalSoft
 
----
-### Application de Gestion d’un Cabinet Dentaire
+### Application de gestion de cabinet dentaire
 
----
-
-> Projet de programmation avancée en Java – EMSI Rabat  
-> Réalisé par une équipe de 4 étudiants sous la supervision de **Pr. Omar EL MIDAOUI**
+> Projet de programmation avancée en Java, EMSI Rabat.
+> Développé par une équipe de quatre étudiants sous l'encadrement du **Pr. Omar EL MIDAOUI**.
 
 ---
 
-## 📖 Sommaire
-1. [Contexte du projet](#-contexte-du-projet)
-2. [Objectifs du projet](#-objectifs-du-projet)
-3. [Technologies utilisées](#-technologies-utilisées)
-4. [Architecture du projet](#-architecture-du-projet)
-5. [Organisation du travail (Scrum / Modules)](#-organisation-du-travail)
-6. [Fonctionnalités principales](#-fonctionnalités-principales)
-7. [Base de données](#-base-de-données)
-8. [Structure du code source](#-structure-du-code-source)
-9. [Charte graphique & UI/UX](#-charte-graphique--uiux)
-10. [Procédure d’installation et d’exécution](#-procédure-dinstallation-et-dexécution)
-11. [Scénario de démonstration](#-scénario-de-démo)
-12. [Conclusion et perspectives](#-conclusion-et-perspectives)
+## Sommaire
+1. [Contexte](#contexte)
+2. [Objectifs](#objectifs)
+3. [Technologies](#technologies)
+4. [Architecture](#architecture)
+5. [Fonctionnalités](#fonctionnalités)
+6. [Base de données](#base-de-données)
+7. [Organisation du code](#organisation-du-code)
+8. [Charte graphique et ergonomie](#charte-graphique-et-ergonomie)
+9. [Installation et exécution](#installation-et-exécution)
+10. [Scénario de démonstration](#scénario-de-démonstration)
+11. [Équipe](#équipe)
 
 ---
 
-## 🩺 Contexte du projet
-La digitalisation des cabinets médicaux devient une nécessité pour améliorer la gestion des dossiers patients, la planification des rendez-vous et le suivi des interventions.  
-Dans ce contexte, **DentalSoft** vise à fournir une **application de bureau (Java Swing)** permettant au médecin dentiste et à sa secrétaire de gérer efficacement les aspects administratifs, médicaux et financiers du cabinet.
+## Contexte
+La transition numérique des cabinets médicaux est devenue indispensable pour mieux organiser les dossiers des patients, planifier les rendez-vous et suivre les soins prodigués.
+**DentalSoft** répond à ce besoin avec une **application de bureau (Java Swing)** qui permet au chirurgien-dentiste et à sa secrétaire de piloter les volets administratif, médical et financier du cabinet.
 
 ---
 
-## 🎯 Objectifs du projet
+## Objectifs
 - **Automatiser** la gestion des patients et de leurs dossiers médicaux.
-- **Optimiser** la planification des rendez-vous et la facturation.
-- **Assurer** un suivi complet du parcours médical du patient (consultations, ordonnances, certificats).
-- **Offrir** une interface ergonomique, intuitive et moderne via Swing.
-- **Appliquer** les principes SOLID et la conception en couches (MVC + DAO + Services).
+- **Améliorer** la planification des rendez-vous ainsi que la facturation.
+- **Garantir** le suivi complet du parcours du patient : consultations, ordonnances et certificats.
+- **Proposer** une interface claire, intuitive et moderne grâce à Swing.
+- **Mettre en pratique** les principes SOLID et une conception en couches (MVC, DAO, services).
 
 ---
 
-## 🧰 Technologies utilisées
-| Catégorie | Technologies                 |
-|------------|------------------------------|
-| Langage principal | Java SE 25                   |
-| Framework graphique | Java Swing                   |
-| Base de données | MySQL 8.0                    |
-| ORM / DAO | JDBC                         |
-| Outils de build | Maven                        |
-| Librairies | Lombok, JFreeChart, iTextPDF |
-| IDE | IntelliJ IDEA Ultimate 2025  |
-| Méthodologie | Agile (Scrum)                |
+## Technologies
+
+| Catégorie            | Technologie                  |
+|----------------------|------------------------------|
+| Langage              | Java SE 25                   |
+| Interface graphique  | Java Swing                   |
+| Base de données      | MySQL 8.0                    |
+| Accès aux données    | JDBC                         |
+| Gestion de build     | Maven                        |
+| Bibliothèques        | Lombok, JFreeChart, iTextPDF |
+| Environnement (IDE)  | IntelliJ IDEA Ultimate 2025  |
+| Méthodologie         | Agile (Scrum)                |
 
 ---
 
-## 🏗️ Architecture du projet
-L’application respecte une architecture **multi-couche MVC** :
+## Architecture
+L'application repose sur une architecture **MVC multicouche** :
 
 ```
 DentalSoft/
 ├─ config/          → Configuration et injection de dépendances
-├─ entities/        → Entités métiers (Patient, Dossier, RendezVous, etc.)
+├─ entities/        → Entités métier (Patient, Dossier, RendezVous, etc.)
 ├─ repository/      → Accès aux données (DAO / JDBC)
-├─ service/         → Logique métier (PatientService, FactureService…)
+├─ service/         → Logique métier (PatientService, FactureService, etc.)
 ├─ mvc/
-│  ├─ controllers/  → Contrôleurs des modules UI
+│  ├─ controllers/  → Contrôleurs des modules d'interface
 │  ├─ dto/          → Objets de transfert de données (DTO)
 │  └─ ui/           → Interface utilisateur (Swing)
-│     ├─ common/        → palette : Composants réutilisables
-│     ├─ rdv/           → Vues module Rendez-vous
-│     ├─ caisse/        → Vues module Caisse
-│     ├─ dashboard/     → Vues tableau de bord
-│     ├─ .../           → Vues d'autres modules
-│     └─ patient/       → Vues module Patient
+│     ├─ common/        → Palette et composants réutilisables
+│     ├─ rdv/           → Vues du module Rendez-vous
+│     ├─ caisse/        → Vues du module Caisse
+│     ├─ dashboard/     → Vues du tableau de bord
+│     ├─ .../           → Vues des autres modules
+│     └─ patient/       → Vues du module Patient
 └─ common/          → Exceptions, utilitaires, validateurs
 ```
 
-Chaque couche communique uniquement avec la couche inférieure (respect du principe **DIP – Dependency Inversion Principle**).
+Chaque couche ne dialogue qu'avec la couche située en dessous, conformément au principe d'inversion des dépendances (**DIP**).
 
 ---
 
+## Fonctionnalités
 
-##  Fonctionnalités principales
-###  Espace Médecin :
-- Accès complet au dossier patient
-- Ajout et consultation des interventions
-- Édition d’ordonnances et certificats
+### Espace Médecin
+- Consultation complète du dossier patient
+- Enregistrement et suivi des interventions
+- Rédaction des ordonnances et des certificats
 - ...
 
-###  Espace Secrétaire :
+### Espace Secrétaire
 - Gestion des rendez-vous
-- Gestion des paiements / factures
-- Consultation du planning global
+- Suivi des paiements et des factures
+- Consultation du planning général
 - ...
 
-###  Fonctions transverses :
-- Authentification / rôles
-- Statistiques (patients / revenus / interventions)
-- Export PDF des rapports
-- Sauvegarde et restauration de la base
+### Fonctionnalités communes
+- Authentification et gestion des rôles
+- Statistiques (patients, revenus, interventions)
+- Export des rapports au format PDF
+- Sauvegarde et restauration de la base de données
 - ...
 
 ---
 
 ## Base de données
-- **Script SQL** : `schema.sql` → création du schéma complet.
-- **Jeu de données** : `seed.sql` → initialisation (patients, rendez-vous, factures ...etc).
-- **Connexion JDBC** : paramètres stockés dans `db.properties`.
+- **Schéma** : le fichier `schema.sql` crée l'ensemble des tables.
+- **Données de test** : le fichier `seed.sql` insère des données initiales (patients, rendez-vous, factures, etc.).
+- **Connexion JDBC** : les paramètres sont définis dans `db.properties`.
 
-**Exemple (db.properties)** :
+**Exemple de `db.properties`** :
 ```properties
 db.url=jdbc:mysql://localhost:3306/DentalSoft
 db.user=root
@@ -118,55 +115,56 @@ db.password=
 
 ---
 
-## 📁 Structure du code source
-Chaque package contient :
-- `entities` → POJOs (avec Lombok)
-- `repository` → Interfaces DAO + impl JDBC
-- `service` → Logique métier
-- `mvc` → Présentation (Swing)
-- `common` → Outils, exceptions, validateurs
-- `config` → Fabriques et contexte applicatif
+## Organisation du code
+Chaque module est découpé selon les packages suivants :
+- `entities` : classes POJO (avec Lombok)
+- `repository` : interfaces DAO et implémentations JDBC
+- `service` : logique métier
+- `mvc` : couche de présentation (Swing)
+- `common` : utilitaires, exceptions et validateurs
+- `config` : fabriques et contexte de l'application
 
 ---
 
-## 🎨 Charte graphique & UI/UX
-- **Palette de couleurs :**
-    - Bleu (#5E98B7)
-    - Blanc (#FFFFFF)
-    - Gris (#D9D9D9)
-    - Vert validation (#81C784)
-    - Rouge alerte (#E57373)
+## Charte graphique et ergonomie
 
-- **Polices :**
-    - `Poppins`
+**Palette de couleurs**
+- Bleu : `#5E98B7`
+- Blanc : `#FFFFFF`
+- Gris : `#D9D9D9`
+- Vert (validation) : `#81C784`
+- Rouge (alerte) : `#E57373`
 
-- **Règles UI :**
-    - Fenêtres centrées
-    - Champs bien espacés
-    - Icônes cohérentes (dossier *static/icones/*)
-    - Respect de la hiérarchie visuelle
+**Police**
+- `Poppins`
+
+**Règles d'interface**
+- Fenêtres centrées à l'écran
+- Champs correctement espacés
+- Icônes homogènes (dossier `static/icones/`)
+- Hiérarchie visuelle respectée
 
 ---
 
-## ⚙️ Procédure d’installation et d’exécution
+## Installation et exécution
 
-1. **Cloner le projet :**
+1. **Cloner le dépôt :**
    ```bash
    git clone https://github.com/IlyCodes/DentalSoft.git
    cd DentalSoft
    ```
 
-2. **Configurer la base de données :**
-    - Importer le fichier `schema.sql` dans MySQL
-    - Modifier `src/main/resources/db.properties`
+2. **Préparer la base de données :**
+    - Importer `schema.sql` dans MySQL
+    - Adapter les paramètres dans `src/main/resources/db.properties`
 
-3. **Compiler et exécuter :**
+3. **Compiler et lancer l'application :**
    ```bash
    mvn clean install
    java -jar target/DentalSoft-1.0-SNAPSHOT-shaded.jar
    ```
 
-4. **Connexion par défaut (test) :**
+4. **Identifiants de test :**
    ```
    Utilisateur : admin@DentalSoft.org
    Mot de passe : admin123
@@ -174,27 +172,27 @@ Chaque package contient :
 
 ---
 
-## 🧪 Scénario de démo
+## Scénario de démonstration
 
-1. **Connexion** avec un compte secrétaire
-2. **Ajout d’un nouveau patient**
-3. **Création d’un rendez-vous**
-4. **Saisie d’une consultation + ordonnance**
-5. **Génération d’une facture PDF**
-6. **Affichage du tableau de bord** (statistiques patients / revenus)
-
----
----
-
-## 👨‍💻 Équipe projet
-| Étudiant | Rôle | Email |
-|-----------|------|------|
-| Étudiant 1 | ...  | ... |
-| Étudiant 2 | ...  | ... |
-| Étudiant 3 | ...  | ... |
-| Étudiant 4 | ...  | ... |
+1. Se connecter avec un compte secrétaire
+2. Ajouter un nouveau patient
+3. Créer un rendez-vous
+4. Enregistrer une consultation et établir une ordonnance
+5. Générer une facture au format PDF
+6. Afficher le tableau de bord (statistiques des patients et des revenus)
 
 ---
 
-© 2025 – **DentalSoft | EMSI Rabat**  
-Encadré par **Pr. Omar El Midaoui**
+## Équipe
+
+| Étudiant   | Rôle | Email |
+|------------|------|-------|
+| Étudiant 1 | ...  | ...   |
+| Étudiant 2 | ...  | ...   |
+| Étudiant 3 | ...  | ...   |
+| Étudiant 4 | ...  | ...   |
+
+---
+
+© 2025 – **DentalSoft | EMSI Rabat**
+Sous l'encadrement du **Pr. Omar El Midaoui**
